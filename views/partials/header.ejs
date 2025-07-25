@@ -1,0 +1,28 @@
+<div class="header">
+    <div class="logo_div">
+        <img class="logo" src="/sgLogo.png" alt="logo">
+        <div class="inventoryName">stashGrid</div>
+    </div>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/games">Games</a>
+        <a href="/categories">Categories</a>
+    </nav>
+    <div>
+        <form action="/games" method="POST">
+            <input type="text" name="search" placeholder="search" required>
+            <button type="submit">search</button>
+        </form>
+    </div>
+
+    <% if(locals.user){ %>
+        <div> <%= locals.user.username %> </div>
+    <% } %>
+
+    <% if(!locals.user){ %>
+        <div class="auth_links">
+            <div><a href="/auth/login">Login</a></div>
+            <div><a href="/auth/signUp">Sign up</a></div>
+        </div>
+    <% } %>
+</div>
