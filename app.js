@@ -2,7 +2,7 @@ const express = require('express');
 const session = require("express-session");
 const app = express();
 const passport = require("passport")
-
+require('dotenv').config();
 const path = require('node:path');
 
 app.set('views', path.join(__dirname, 'views'));
@@ -14,7 +14,7 @@ const { indexRouter } = require('./routes/indexRoute');
 const { authRouter } = require('./routes/authRoute');
 
 app.use(express.static('public'));
-app.use(session({ secret: "inventory", resave: false, saveUninitialized: false }));
+app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }));
 app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
 

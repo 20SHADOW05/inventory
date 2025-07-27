@@ -1,22 +1,25 @@
 <div class="header">
     <div class="logo_div">
-        <img class="logo" src="/sgLogo.png" alt="logo">
-        <div class="inventoryName">stashGrid</div>
+        <a href="/"><img class="logo" src="/icons/sgLogo.png" alt="logo"></a>
+        <a href="/"><div class="inventoryName">stashGrid</div></a>
     </div>
     <nav>
         <a href="/">Home</a>
-        <a href="/games">Games</a>
+        <a href="/products">Products</a>
         <a href="/categories">Categories</a>
     </nav>
     <div>
-        <form action="/games" method="POST">
+        <form action="/products" method="POST">
             <input type="text" name="search" placeholder="search" required>
-            <button type="submit">search</button>
+            <button class="searchSubmit" type="submit">search</button>
         </form>
     </div>
 
     <% if(locals.user){ %>
-        <div> <%= locals.user.username %> </div>
+        <div class="userDiv">
+            <%= user.display_name %> 
+            <div class="userIcon"><img src="/icons/user.png" alt="userIcon"></div>
+        </div>
     <% } %>
 
     <% if(!locals.user){ %>

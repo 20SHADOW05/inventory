@@ -1,0 +1,100 @@
+@font-face {
+    font-family: poppinsBold;
+    src: url(/fonts/Poppins-Bold.ttf);
+}
+
+@font-face {
+    font-family: poppinsMedium;
+    src: url(/fonts/Poppins-Medium.ttf);
+}
+
+@font-face {
+    font-family: poppinsRegular;
+    src: url(/fonts/Poppins-Regular.ttf);
+}
+
+body{
+    font-family: poppinsRegular, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(60, 60, 60);
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vh;
+}
+
+.container>div{
+    font-family: poppinsBold, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.5em;
+    margin-bottom: 12px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+}
+
+input {
+    padding: 6px 10px;
+    border: 1px solid #cecece;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.9em;
+    font-family: poppinsRegular, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+  
+input:focus {
+    border-color: #4361ee;
+    outline: none;
+} 
+
+form>div>label, .container>p, .signButton>button{
+    font-size: 1.1rem;
+    font-family: poppinsMedium, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.signButton{
+    display: flex;
+    justify-content: center;
+}
+
+
+.signButton>button {
+  background: #2ea44f;
+  border: 0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: poppinsMedium, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+}
+
+.signButton .login{
+    background: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+}
+
+.userCheck {
+    position: relative;
+}
+
+#username-message {
+    position: absolute;
+    top: 100%;
+    left: 0;
+}

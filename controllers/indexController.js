@@ -1,5 +1,6 @@
 function indexParse(req , res) {
-    res.render('index' , { user : req.user});
+    console.log(req.user);
+    res.render('index' , { user : req.user });
 }
 
 module.exports =  { indexParse };

@@ -3,21 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <title>stashGrid</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/icons/sgIcon.png" type="image/png">
+    <link rel="stylesheet" href="/css/sign.css">
 </head>
 <body>
-    <div class="signup-container">
-        <h2>Create Account</h2>
+    <div class="container">
+        <div>Create Account</div>
         <form action="/auth/signUp" method="POST">
-            <label>Username</label>
-            <input type="text" name="username" required>
+            <div class="userCheck"><label>Username</label>
+            <input id="username" type="text" pattern="^[A-Za-z0-9._]{3,20}$" title="3-20 characters, only letters, numbers, dot, underscore" name="username" required>
+            <p id="username-message" style="margin: 5px 0; font-size: 14px;"></p></div>
 
-            <label>Password</label>
-            <input type="password" name="password" required>
+            <div><label for="display_name">Display name</label>
+            <input type="text" maxlength="30" name="display_name" required></div>
 
-            <button type="submit">Sign Up</button>
+            <div><label>Password</label>
+            <input type="password" name="password" required></div>
+
+            <div class="signButton"><button type="submit">Sign Up</button></div>
         </form>
-        <p>Already have an account? <a href="/auth/login">Login</a></p>
+        <p>Already have an account ? <a href="/auth/login">Login</a></p>
     </div>
+
+    <script>
+        const usernameInput = document.getElementById("username");
+        const message = document.getElementById("username-message");
+
+        usernameInput.addEventListener("input", async () => {
+            const username = usernameInput.value;
+
+            // Clear message if empty
+            if (username.length === 0) {
+                message.textContent = "";
+                return;
+            }
+
+            // Check pattern first (same as your HTML pattern)
+            const pattern = /^[A-Za-z0-9._]{3,20}$/;
+            if (!pattern.test(username)) {
+                message.textContent = "3-20 characters, only letters, numbers, dot, underscore";
+                message.style.color = "red";
+                return;
+            }
+
+            // If pattern is valid, check with server
+            try {
+                const response = await fetch(`/auth/check-username?username=${encodeURIComponent(username)}`);
+                const data = await response.json();
+
+                if (data.exists) {
+                    message.textContent = "Username is already taken";
+                    message.style.color = "red";
+                } else {
+                    message.textContent = "Username is available ✓";
+                    message.style.color = "green";
+                }
+            } catch (error) {
+                message.textContent = "Error checking username";
+                message.style.color = "red";
+            }
+        });
+    </script>
 </body>
 </html>
