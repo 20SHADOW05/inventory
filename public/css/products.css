@@ -1,0 +1,17 @@
+.content{
+    margin: 4vh 16vw;
+    display: flex;
+    border: 1px solid rgb(148, 146, 146);
+    border-radius: 10px;
+}
+
+.filter{
+    width: 14vw;
+    border-right: 1px solid rgb(148, 146, 146);;
+}
+
+.container{
+    width: 60vw;
+    display: flex;
+    flex-wrap: wrap;
+}

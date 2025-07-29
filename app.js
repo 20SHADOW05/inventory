@@ -11,6 +11,7 @@ require('./config/passport');
 
 const { indexRouter } = require('./routes/indexRoute');
 const { authRouter } = require('./routes/authRoute');
+const { productRouter } = require('./routes/productRouter');
 
 app.use(express.static('public'));
 app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }));
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);
 app.use('/auth' , authRouter);
+app.use('/products', productRouter);
 
 const PORT = process.env.PORT || 3000;
 
