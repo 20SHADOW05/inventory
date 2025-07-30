@@ -10,15 +10,28 @@
 </head>
 <body>
     <%- include('partials/header') %>
-    <div>Products</div>
     <div class="content">
-        <div class="filter">
-            <div>filter by categories</div>
-            <% categories.map((item) => { %>
-                <div><%= item.category %></div>
+        <form action="/products" method="POST" class="filter">
+            <div class="filter_cat">Filter by categories :</div>
+            <% categories.forEach((item) => { %>
+                <div class="categories">
+                    <div><input type="checkbox" name="include_category" ></div>
+                    <div><%= item.category.charAt(0).toUpperCase() + item.category.slice(1) %></div>
+                </div>
+            <% }) %>
+        </form>
+        <div class="container">
+            <% products.forEach((product) => { %>
+                <div class="product">
+                    <img src="<%= product.image_path %>" alt="<%= product.name %>">
+                    <div class="name_price">
+                        <span><%= product.name %></span>
+                        <span><%= product.price %></span>
+                    </div>
+                    <div class="category_db <%= product.category %>" ><%= product.category.charAt(0).toUpperCase() + product.category.slice(1) %></div>
+                </div>
             <% }) %>
         </div>
-        <div class="container"></div>
     </div>
 </body>
 </html>
