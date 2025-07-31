@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/icons/sgIcon.png" type="image/png">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/search.css">
+    <title>stashGrid</title>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <div class="content">
+        <div style="font-size: 1.5em; font-family: poppinsMedium, system-ui, -apple-system, BlinkMacSystemFont, 'Open Sans';">Search results for '<%= item %>'</div>
+        <div><a style="color: #FFFFFF;" class="btn" href="/products">⮜ return to Products</a></div> 
+        <div class="item">
+            <% if (product) { %>
+                <img src="<%= product.image_path %>" alt="<%= product.name %>">
+                    <div class="name_price">
+                        <span><%= product.name %></span>
+                        <span><%= product.price %></span>
+                    </div>
+                    <div class="category_db <%= product.category %>" ><%= product.category %></div>
+            <% } else { %>
+                No results found.
+            <% } %>
+
+        </div>
+    </div>
+</body>
+</html>

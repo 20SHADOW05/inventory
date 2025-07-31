@@ -1,0 +1,15 @@
+@import url(./index.css);
+@import url(./products.css);
+
+.content{
+    border: none;
+    display: flex;
+    gap: 5vh;
+    flex-direction: column;
+}
+
+.item{
+    border: 1px solid rgb(48, 48, 48);
+    border-radius: 8px;
+    width: 300px;
+}
