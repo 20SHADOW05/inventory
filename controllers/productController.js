@@ -6,4 +6,4 @@ async function load_products(req, res){
     res.render('products' , { categories: categories.rows , products: products.rows });
 }
 
-module.exports = { load_products }
+module.exports = { load_products };
