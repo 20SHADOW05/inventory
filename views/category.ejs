@@ -12,9 +12,14 @@
     <%- include('partials/header') %>
     <div class="content">
         <% categories.forEach((item) => { %>
-            <div class="category">
-                <div class="category_content"><%= item.category.charAt(0).toUpperCase() + item.category.slice(1) %></div>
-            </div>
+            <form action="/products" method="GET">
+                <input type="hidden" name="categories" value="<%= item.category %>">
+                <button class="category">
+                    <div class="category_content">
+                        <%= item.category.charAt(0).toUpperCase() + item.category.slice(1) %>
+                    </div>
+                </button>
+            </form>
         <% })%>
     </div>
 </body>
