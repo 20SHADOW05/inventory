@@ -1,7 +1,7 @@
 @import url(./index.css);
 
 .content{
-    font-family: poppinsRegular, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: poppinsRegular, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #2b2d2e;
     margin: 6vh 14vw;
     display: flex;
@@ -19,7 +19,7 @@
 }
 
 .filter_cat{
-    font-family: poppinsMedium, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: poppinsMedium, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.2rem;
 }
 
@@ -59,7 +59,7 @@ img{
     display: flex;
     box-sizing: border-box;
     justify-content: space-between;
-    font-family: poppinsMedium, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: poppinsMedium, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
     padding: 6px 12px 12px;
 }
 
@@ -83,6 +83,6 @@ img{
   color: #FFFFFF;
   cursor: pointer;
   font-size: 1rem;
-  font-family: poppinsMedium, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: poppinsMedium, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 0.5rem 1rem;
 }
