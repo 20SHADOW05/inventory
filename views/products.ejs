@@ -11,11 +11,11 @@
 <body>
     <%- include('partials/header') %>
     <div class="content">
-        <form action="/products" method="POST" class="filter">
+        <form action="/products" method="GET" class="filter">
             <div class="filter_cat">Filter by categories :</div>
             <% categories.forEach((item) => { %>
                 <div class="categories">
-                    <div><input type="checkbox" name="include_category" ></div>
+                    <div><input type="checkbox" name="categories" value="<%= item.category %>" <%= selected_categories.includes(item.category) ? 'checked' : '' %>></div>
                     <div><%= item.category.charAt(0).toUpperCase() + item.category.slice(1) %></div>
                 </div>
             <% }) %>

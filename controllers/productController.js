@@ -1,9 +1,21 @@
 const pool = require('../config/db');
 
 async function load_products(req, res){
+    const selected_categories = [].concat(req.query.categories || []);
+
+    let query = 'SELECT * FROM default_products';
+    let params = [];
+
+    if(selected_categories.length > 0){
+        query += ' WHERE category = ANY($1)';
+        params = [selected_categories];
+    }
+
+    const products = params.length > 0 ? await pool.query(query, params) : await pool.query('SELECT * FROM default_products');
+
     const categories = await pool.query('SELECT DISTINCT category FROM default_products');
-    const products = await pool.query('SELECT * FROM default_products');
-    res.render('products' , { categories: categories.rows , products: products.rows });
+    
+    res.render('products' , { categories: categories.rows , products: products.rows , selected_categories });
 }
 
 async function search_products(req, res){
