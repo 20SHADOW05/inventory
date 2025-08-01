@@ -2,18 +2,19 @@
 
 body{
     font-family: poppinsRegular, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(60, 60, 60);
+    color: rgb(71, 69, 69);
 }
 
 .container{
     display: flex;
+    padding: 1vw 2vw;
+    border: 1px solid rgb(102, 101, 101);
+    border-radius: 8px;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap: 2vh;
 }
@@ -24,9 +25,12 @@ body{
     margin-bottom: 12px;
 }
 
-form{
+form , form>div{
     display: flex;
     flex-direction: column;
+}
+
+form {
     gap: 4vh;
 }
 
@@ -34,7 +38,6 @@ input {
     padding: 6px 10px;
     border: 1px solid #cecece;
     border-radius: 8px;
-    width: 100%;
     box-sizing: border-box;
     font-size: 0.9em;
     font-family: poppinsRegular, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -62,14 +65,8 @@ form>div>label, .container>p, .signButton>button{
   border-radius: 12px;
   color: #FFFFFF;
   cursor: pointer;
-  display: inline-block;
   font-family: poppinsMedium, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
-  line-height: 2.5;
-  outline: transparent;
-  padding: 0 1rem;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
+  padding: 0.5rem 1rem;
 }
 
 .signButton .login{
