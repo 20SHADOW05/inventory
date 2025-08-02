@@ -1,9 +1,26 @@
+body{
+  height: 100vh;
+}
+
 .content{
     font-family: poppinsRegular, system-ui,'Open Sans', 'Helvetica Neue', sans-serif;
-    margin: 6vh 14vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.add_category{
+   margin: 4vh 16.5vw 0;
+  justify-content: flex-start;
+  background: #2ea44f;
+  border: 0;
+  display: inline-block;
+  border-radius: 8px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: poppinsMedium, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 0.5rem 1rem;
 }
 
 .category{
@@ -15,6 +32,7 @@
     width: 250px;
     height: 100px;
     cursor: pointer;
+    margin-bottom: 2vw;
 }
 
 .category_content {

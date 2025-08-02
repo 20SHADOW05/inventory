@@ -10,9 +10,10 @@
 </head>
 <body>
     <%- include('partials/header') %>
+    <div class="add_category"><a href="">+ add category</a></div>
     <div class="content">
         <% categories.forEach((item) => { %>
-            <form action="/products" method="GET">
+            <form  action="/products" method="GET">
                 <input type="hidden" name="categories" value="<%= item.category %>">
                 <button class="category">
                     <div class="category_content">
