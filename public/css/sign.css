@@ -1,7 +1,7 @@
 @import url(./index.css);
 
 body{
-    font-family: poppinsRegular, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: poppinsMedium, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -11,7 +11,7 @@ body{
 
 .container{
     display: flex;
-    padding: 1vw 2vw;
+    padding: 2vw 2vw;
     border: 1px solid rgb(102, 101, 101);
     border-radius: 8px;
     flex-direction: column;
@@ -48,24 +48,23 @@ input:focus {
     outline: none;
 } 
 
-form>div>label, .container>p, .signButton>button{
+form>div>label, .container>p, .signButton>button , .addButton>button{
     font-size: 1.1rem;
-    font-family: poppinsMedium, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.signButton{
+.signButton, .addButton>button{
+    font-family: poppinsMedium, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
     display: flex;
     justify-content: center;
 }
 
 
-.signButton>button {
+.signButton>button, .addButton>button{
   background: #2ea44f;
   border: 0;
   border-radius: 12px;
   color: #FFFFFF;
   cursor: pointer;
-  font-family: poppinsMedium, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 0.5rem 1rem;
 }
 
@@ -81,4 +80,19 @@ form>div>label, .container>p, .signButton>button{
     position: absolute;
     top: 100%;
     left: 0;
+}
+
+.category-select {
+    border: 1px solid #cecece;
+    color: rgb(71, 69, 69);
+    font-family: poppinsMedium, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+    border-radius: 8px;
+    padding: 0.5rem;
+    align-items: center;
+}
+
+option {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
 }

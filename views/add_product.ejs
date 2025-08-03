@@ -4,13 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>stashGrid</title>
+    <link rel="icon" href="/icons/sgIcon.png" type="image/png">
+    <link rel="stylesheet" href="/css/sign.css">
 </head>
 <body>
-    <div>
+    <div class="container">
         <form action="/products" method="post">
-            <div><label for="name"></label><input type="text"></div>
-            <div><label for="price"></label><input type="text"></div>
-            <div><label for="category"></label><input type="text"></div>
+            <div>
+                <label for="product_name"> Product name </label>
+                <input id="product_name" type="text" required>
+            </div>
+            <div>
+                <label for="price">Price</label>
+                <input id="price" type="text" pattern="^\d{1,6}(\.\d{1,6})?$" title="Up to 6 digits before or after decimal"required>
+            </div>
+            <div>
+                <div style="padding-bottom: 9px; font-size: 1.1rem;">category</div>
+                <select name="category" class="category-select">
+                    <% categories.forEach((item) => { %>
+                        <option class="<%= item.category %>" value="<%= item.category %>"><%= item.category %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div style=" width: 100%; align-items: center;" class="addButton"><button type="submit">+ add</button></div>
         </form>
     </div>
 </body>

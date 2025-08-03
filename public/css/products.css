@@ -13,7 +13,7 @@
     align-items: flex-start;
     width: 20vw;
     border-right: 2px solid rgb(148, 146, 146);
-    padding: 2vw;
+    padding: 2vw 1.5vw;
 }
 
 .filter_cat{

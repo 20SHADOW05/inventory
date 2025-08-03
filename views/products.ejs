@@ -20,7 +20,15 @@
                 </div>
             <% }) %>
             <div><button class="btn" type="submit">Apply Filters</button></div>
-            <div class="add_product"><a href="">+ add Product</a></div>
+            <div>
+                <div style="display: inline-block;" class="add_product"><a href="<%= userIn ? '/products/add_product' : '/auth/signUp' %>">+ add Product</a></div>
+                <% if(!userIn){ %>
+                    <div style="font-size: 0.9rem; color: rgb(195, 20, 20);"> *Sign up or log in to add products.</div>
+                <% }%>
+                
+            </div>
+            
+            
         </form>
         <div class="container">
             <% products.forEach((product) => { %>
@@ -37,3 +45,5 @@
     </div>
 </body>
 </html>
+
+<!-- <%= userIn ? '/products/add_product' : '/auth/signUp' %> -->

@@ -6,13 +6,40 @@ function sign_up_Parse(req , res){
 }
 
 async function signUp_post(req , res , next) {
+    const client = await pool.connect();
+
     try {
+      await client.query('BEGIN');
+
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
-      await pool.query("INSERT INTO users (username,display_name, password) VALUES ($1, $2, $3)", [req.body.username,req.body.display_name, hashedPassword]);
+      const userResult = await client.query("INSERT INTO users (username,display_name, password) VALUES ($1, $2, $3) RETURNING id", [req.body.username,req.body.display_name, hashedPassword]);
+      const userId = userResult.rows[0].id;
+
+      const categoriesResult = await client.query("SELECT DISTINCT category from default_products");
+      const categoryMap = {};
+
+      for(const row of categoriesResult.rows){
+        const insertCategories = await client.query("INSERT INTO user_categories (user_id,category) VALUES($1,$2) RETURNING id" , [userId, row.category]);
+        categoryMap[row.category] = insertCategories.rows[0].id;
+      }
+
+      const productsResult = await client.query('SELECT * FROM default_products');
+
+      for(const row of productsResult.rows){
+        await client.query("INSERT INTO user_products (user_id, category_id, product_name, price, image_path) VALUES($1, $2 ,$3 ,$4 ,$5)", 
+          [ userId, categoryMap[row.category], row.name, row.price, row.image_path ]
+        );
+      }
+
+      await client.query('COMMIT');
       res.redirect("/auth/login");
+
     } catch (error) {
+        await client.query('ROLLBACK');
         console.error(error);
         next(error);
+    } finally {
+        client.release();
     }
 }
 
