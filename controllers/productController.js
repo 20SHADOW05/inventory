@@ -49,10 +49,27 @@ async function load_products(req, res){
 }
 
 async function search_products(req, res){
+    let userExists = req.user ? req.user.id : false;
     const search_item = req.body.search?.split(' ')
                                         .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
                                         .join(' ');
-    const product = await pool.query('SELECT * FROM default_products WHERE name=$1' , [search_item]);
+                                        
+    let product;
+    if(userExists){
+        product = await pool.query(
+                    `SELECT up.user_id, up.product_id, up.product_name, uc.category, up.price, up.image_path
+                    FROM user_products up
+                    INNER JOIN user_categories uc
+                    ON up.category_id = uc.category_id
+                    WHERE up.user_id = $1
+                    AND up.product_name = $2`,
+                    [userExists,search_item]
+                );
+    }
+    else{
+        product = await pool.query('SELECT * FROM default_products WHERE name=$1' , [search_item]);
+    }
+    
     res.render('search', { item: req.body.search , product : product.rowCount > 0 ? product.rows[0] : false });
 }
 
@@ -69,4 +86,4 @@ async function add_products_db(req,res){
     );
 }
 
-module.exports = { load_products , search_products , add_products };
+module.exports = { load_products , search_products , add_products, add_products_db };
