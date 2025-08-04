@@ -57,8 +57,16 @@ async function search_products(req, res){
 }
 
 async function add_products(req, res){
-    const categories = await pool.query('SELECT DISTINCT category FROM default_products');
+    categories = await pool.query('SELECT category FROM user_categories WHERE user_id=$1',[req.user.id]);
     res.render('add_product' , { categories: categories.rows });
+}
+
+async function add_products_db(req,res){
+    const selected_category_id = await pool.query('SELECT category_id FROM user_categories WHERE user_id=$1 AND category=$2', [req.user.id , req.body.category]);
+
+    await pool.query('INSERT INTO user_products (user_id,category_id,product_name,price,image_path) VALUES($1, $2, $3, $4, $5)',
+                    [req.user.id,selected_category_id.rows[0].category_id,req.body.product_name,req.body.price,'/images/d_img.jpg']
+    );
 }
 
 module.exports = { load_products , search_products , add_products };
