@@ -10,7 +10,10 @@
 </head>
 <body>
     <%- include('partials/header') %>
-    <div class="add_category"><a href="">+ add category</a></div>
+    <div id="user-data" data-user="<%= userIn ? 'true' : 'false' %>" class="add_category"><button style="all:unset; background-color: inherit;">+ add category</button></div>
+    <% if(!userIn){ %>
+        <div class="info"> *Sign up or log in to add category.</div>
+    <% }%>
     <div class="content">
         <% categories.forEach((item) => { %>
             <form  action="/products" method="GET">
@@ -23,5 +26,44 @@
             </form>
         <% })%>
     </div>
+
+    <script>
+        const userDataDiv = document.getElementById("user-data");
+        const userIn = userDataDiv.dataset.user === 'true';
+
+        const showButton = document.querySelector(".add_category button");
+
+        showButton.addEventListener("click", (e) => {
+            if (!userIn) {
+                window.location.href = '/auth/signUp';
+            return;
+            }
+
+            const dialog = document.createElement("dialog");
+            dialog.id = "categoryDialog";
+
+            dialog.innerHTML = `
+                <form action="/categories" method="POST">
+                    <label for="category_name">Category Name</label>
+                    <input style="width: 300px; font-size: 0.9em;" type="text" id="category_name" name="category_name" maxlength="50" required>
+                    
+                    <div class="dialog-buttons">
+                        <button type="button" class="closeButton">Cancel</button>
+                        <button type="submit" class="submitButton">Add Category</button>
+                    </div>
+                </form>
+            `;
+            document.body.appendChild(dialog);
+
+            const closeButton = dialog.querySelector(".closeButton");
+            closeButton.addEventListener("click", () => {
+                dialog.close();
+                dialog.remove();
+            });
+
+            dialog.showModal();
+        });
+
+    </script>
 </body>
 </html>

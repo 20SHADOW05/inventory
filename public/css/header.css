@@ -46,7 +46,7 @@ input:focus {
     outline: none;
 }
 
-.searchSubmit {
+.searchSubmit , .closeButton , .submitButton {
   background-color: #36A9AE;
   border: 1px solid #2A8387;
   border-radius: 8px;
@@ -55,6 +55,11 @@ input:focus {
   font-family: poppinsMedium, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 0.9em;
   padding: 4px 12px;
+}
+
+.closeButton{
+  background-color: #FF8989;
+  border: 1px solid #d55353;
 }
 
 a,

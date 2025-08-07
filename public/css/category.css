@@ -10,7 +10,7 @@ body{
 }
 
 .add_category{
-   margin: 4vh 16.5vw 0;
+  margin: 4vh 16.5vw 0;
   justify-content: flex-start;
   background: #2ea44f;
   border: 0;
@@ -21,6 +21,13 @@ body{
   font-size: 1rem;
   font-family: poppinsMedium, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 0.5rem 1rem;
+}
+
+.info{
+  margin: 1vh 16.5vw 0;
+  color: rgb(195, 20, 20);
+  font-size: 0.9rem;
+  font-family: poppinsMedium, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .category{
@@ -40,4 +47,29 @@ body{
   font-size: 1.1rem;
   color: #c8ccd3;
   border-radius: 1.2rem;
+}
+
+dialog {
+  width: 90%;
+  max-width: 300px;
+  padding: 2em;
+  border: none;
+  border-radius: 8px;
+  font-family: poppinsRegular, system-ui, sans-serif;
+  position: fixed;
+  top: 20%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dialog-buttons{
+  display: flex;
+  gap: 2vw;
 }

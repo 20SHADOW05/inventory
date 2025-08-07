@@ -41,6 +41,7 @@ input[type="checkbox"] {
 }
 
 .product{
+    height: max-content;
     border: 1px solid #2b2d2e;
     margin-bottom: 2vw;
     border-radius: 6px;
@@ -51,6 +52,10 @@ img{
     height: auto;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
+}
+
+.products_images{
+    height: 140px;
 }
 
 .name_price{

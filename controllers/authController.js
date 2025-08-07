@@ -19,8 +19,8 @@ async function signUp_post(req , res , next) {
       const categoryMap = {};
 
       for(const row of categoriesResult.rows){
-        const insertCategories = await client.query("INSERT INTO user_categories (user_id,category) VALUES($1,$2) RETURNING id" , [userId, row.category]);
-        categoryMap[row.category] = insertCategories.rows[0].id;
+        const insertCategories = await client.query("INSERT INTO user_categories (user_id,category) VALUES($1,$2) RETURNING category_id" , [userId, row.category]);
+        categoryMap[row.category] = insertCategories.rows[0].category_id;
       }
 
       const productsResult = await client.query('SELECT * FROM default_products');

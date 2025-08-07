@@ -60,6 +60,7 @@ form>div>label, .container>p, .signButton>button , .addButton>button{
 
 
 .signButton>button, .addButton>button{
+  font-family: poppinsMedium, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
   background: #2ea44f;
   border: 0;
   border-radius: 12px;

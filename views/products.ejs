@@ -33,9 +33,9 @@
         <div class="container">
             <% products.forEach((product) => { %>
                 <div class="product">
-                    <img src="<%= product.image_path %>" alt="<%= product.name %>">
+                    <img class="products_images" src="<%= product.image_path %>" alt="<%= product.name %>">
                     <div class="name_price">
-                        <span><%= product.name %></span>
+                        <span><%= product.name || product.product_name %></span>
                         <span><%= product.price %></span>
                     </div>
                     <div class="category_db <%= product.category %>" ><%= product.category.charAt(0).toUpperCase() + product.category.slice(1) %></div>

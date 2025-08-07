@@ -1,4 +1,3 @@
-const { use } = require('passport');
 const pool = require('../config/db');
 
 async function load_products(req, res){
@@ -23,11 +22,11 @@ async function load_products(req, res){
 
             const selected_categories_id = cat_ids_result.rows.map(row => row.category_id);
 
-            query += ' AND up.category_id = ANY($2)';
+            query += ' AND up.category_id = ANY($2)'; 
             params.push(selected_categories_id);    
         }      
 
-        categories = await pool.query('SELECT category FROM user_categories WHERE user_id=$1',[userExists])
+        categories = await pool.query('SELECT category FROM user_categories WHERE user_id=$1',[userExists]);
         products = await pool.query(query, params);
 
     }
@@ -45,7 +44,7 @@ async function load_products(req, res){
         products = selected_categories.length > 0 ? await pool.query(query, params) : await pool.query('SELECT * FROM default_products');
     }
 
-    res.render('products' , { categories: categories.rows , products: products.rows , selected_categories , userIn: userExists});
+    res.render('products' , { categories: categories.rows , products: products.rows , selected_categories , userIn: userExists , user : req.user});
 }
 
 async function search_products(req, res){
@@ -70,7 +69,7 @@ async function search_products(req, res){
         product = await pool.query('SELECT * FROM default_products WHERE name=$1' , [search_item]);
     }
     
-    res.render('search', { item: req.body.search , product : product.rowCount > 0 ? product.rows[0] : false });
+    res.render('search', { item: req.body.search , product : product.rowCount > 0 ? product.rows : false });
 }
 
 async function add_products(req, res){
@@ -81,9 +80,12 @@ async function add_products(req, res){
 async function add_products_db(req,res){
     const selected_category_id = await pool.query('SELECT category_id FROM user_categories WHERE user_id=$1 AND category=$2', [req.user.id , req.body.category]);
 
+    const product_name = req.body.product_name.charAt(0).toUpperCase() + req.body.product_name.slice(1);
     await pool.query('INSERT INTO user_products (user_id,category_id,product_name,price,image_path) VALUES($1, $2, $3, $4, $5)',
-                    [req.user.id,selected_category_id.rows[0].category_id,req.body.product_name,req.body.price,'/images/d_img.jpg']
+                    [req.user.id,selected_category_id.rows[0].category_id,product_name,req.body.price,'/images/d_img.jpg']
     );
+
+    res.redirect('/products');
 }
 
 module.exports = { load_products , search_products , add_products, add_products_db };
