@@ -1,5 +1,13 @@
 @import url(./index.css);
 
+@media screen and (min-resolution: 1.25dppx) {
+  html { zoom: 0.85; }
+}
+
+@media screen and (min-resolution: 1.5dppx) {
+  html { zoom: 0.75; }
+}
+
 body{
     font-family: poppinsMedium, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
     height: 100vh;
