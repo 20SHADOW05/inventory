@@ -22,6 +22,15 @@ app.use('/', indexRouter);
 app.use('/auth' , authRouter);
 app.use('/products', productRouter);
 app.use('/categories' , categoryRouter);
+app.get("/log-out", (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
+
 
 const PORT = process.env.PORT || 3000;
 

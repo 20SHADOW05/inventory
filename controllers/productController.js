@@ -69,7 +69,7 @@ async function search_products(req, res){
         product = await pool.query('SELECT * FROM default_products WHERE name=$1' , [search_item]);
     }
     
-    res.render('search', { item: req.body.search , product : product.rowCount > 0 ? product.rows : false });
+    res.render('search', { item: req.body.search , product : product.rowCount > 0 ? product.rows : false , user : req.user });
 }
 
 async function add_products(req, res){

@@ -27,7 +27,7 @@ body{
   margin: 1vh 16.5vw 0;
   color: rgb(195, 20, 20);
   font-size: 0.9rem;
-  font-family: poppinsMedium, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: poppinsRegular, system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .category{
