@@ -1,5 +1,13 @@
 @import url(./index.css);
 
+@media screen and (min-resolution: 1.25dppx) {
+  html { zoom: 0.9; }
+}
+
+@media screen and (min-resolution: 1.5dppx) {
+  html { zoom: 0.8; }
+}
+
 .header{
     display: flex;
     height: 80px;
